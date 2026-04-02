@@ -1,58 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+```markdown
+# 🚀 TaskFlow - Gerenciador de Tarefas (Desafio Técnico DTI)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é um sistema de gerenciamento de tarefas (To-Do List) desenvolvido em **Laravel 13**, focado em simplicidade, segurança e experiência do usuário. O sistema permite o cadastro de usuários, autenticação segura e a gestão individual de tarefas (CRUD).
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🛠️ Tecnologias e Versões Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para o desenvolvimento deste projeto, foram utilizadas as seguintes ferramentas e versões:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Ambiente Local:** XAMPP (Apache & MySQL)
+- **PHP:** 8.4.6
+- **Framework:** Laravel 13.3.0
+- **Gerenciador de Dependências:** Composer 2.8.5
+- **Frontend:** Tailwind CSS (via CDN) & SweetAlert2 (Notificações Toasts)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Como Instalar e Rodar o Projeto (XAMPP)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+Siga os passos abaixo para configurar o ambiente em sua máquina local:
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 1\. Clonar o Repositório
 
-## Contributing
+```bash
+git clone https://github.com/Ja1-coder/processo_seletivo_dti_joao_victor_proenca.git
+cd processo-seletivo-dti
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2\. Instalar Dependências do PHP
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3\. Configurar o Ambiente (.env)
 
-## Security Vulnerabilities
+1.  Certifique-se de que o **XAMPP** (Apache e MySQL) está rodando.
+2.  No seu navegador, acesse o `localhost/phpmyadmin` e crie um banco de dados chamado `taskflow_db`.
+3.  Na raiz do projeto, copie o arquivo de exemplo e gere a chave da aplicação:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<!-- end list -->
 
-## License
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4.  No arquivo `.env`, ajuste as credenciais conforme o seu XAMPP:
+
+<!-- end list -->
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=taskflow_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4\. Migrações e Dados de Teste (Seeders)
+
+Execute o comando abaixo para criar as tabelas e popular o banco com os usuários de teste pré-definidos:
+
+```bash
+php artisan migrate --seed
+```
+
+### 5\. Iniciar o Servidor
+
+```bash
+php artisan serve
+```
+
+---
+
+## 🔐 Usuários para Teste (Seeders)
+
+O sistema já vem com três usuários cadastrados para facilitar a avaliação. **A senha é a mesma para todos os perfis.**
+
+| Usuário         | E-mail            | Senha      |
+| :-------------- | :---------------- | :--------- |
+| **João Victor** | `joao@teste.com`  | `teste123` |
+| **Pedro**       | `pedro@teste.com` | `teste123` |
+| **Jonas**       | `jonas@teste.com` | `teste123` |
+
+---
+
+## 💡 Funcionalidades Principais
+
+- **Sistema de Autenticação:** Login, Cadastro de novos usuários e Logout.
+- **Gestão de Tarefas (CRUD):** Criação, listagem e exclusão de tarefas em uma única tela.
+- **Controle de Status:** Alternância rápida entre tarefas "Pendentes" e "Concluídas".
+- **Privacidade de Dados:** Cada usuário logado tem acesso apenas às suas próprias tarefas (Vínculo por `user_id`).
+- **Interface Moderna:** Layout limpo em tons pastel de azul utilizando Tailwind CSS.
+- **Experiência do Usuário:** Mensagens de erro e sucesso via SweetAlert2 (Toasts no canto superior direito).
+
+---
+
+Desenvolvido por **João Victor Nascimento Proença** como parte do processo seletivo DTI - 2026.
